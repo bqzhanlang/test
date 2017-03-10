@@ -1,6 +1,7 @@
 FROM php:5.6-fpm
 
 COPY redis.tgz /home/redis.tgz
+RUN docker-php-ext-install libpng12-dev
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
